@@ -9,5 +9,6 @@ export interface Result {
   poster_path: string;
   release_date:string
   overview:string
+  original_title:string
 
 }

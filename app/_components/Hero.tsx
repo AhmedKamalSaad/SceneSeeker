@@ -6,9 +6,9 @@ const Hero = async () => {
   const movies = await getPopularMovies();
   const topMovie = movies[1];
   return (
-    <div className="w-full h-[100vh] bg-red-700 relative">
+    <div className="w-full bg-red-700 relative h-dvh">
       <div className="absolute bg-black/50 z-10 top-0 w-full h-full flex justify-start items-end text-white px-14">
-        <div className="flex flex-col pb-56 ">
+        <div className="flex flex-col  absolute left-12 bottom-40 ">
           <h1 className="text-5xl font-bold tracking-wider mb-1">
             {topMovie.title}
           </h1>
