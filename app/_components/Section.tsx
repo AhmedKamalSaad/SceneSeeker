@@ -34,7 +34,7 @@ const Section = ({ data, title }: { data: Result[]; title: string }) => {
               key={d.id}
               className=" sm:basis-1/2 md:basis-1/4 lg:basis-1/6 h-[350px]   "
             >
-              <Dialog onOpenChange={() => console.log(d.title)}>
+              <Dialog>
                 <DialogTrigger className="m-0 p-0">
                   <Image
                     alt="img"
