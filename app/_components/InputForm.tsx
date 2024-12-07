@@ -23,7 +23,7 @@ const FormSchema = z.object({
   }),
 });
 
-export function InputForm() {
+export function InputForm({route,search}:{route:string,search:string}) {
   const searchParams = useSearchParams();
   const pathName = usePathname();
   const params = new URLSearchParams(searchParams);
@@ -45,7 +45,7 @@ export function InputForm() {
     replace(`${pathName}?${params.toString()}`);
   }
   useEffect(() => {
-    replace("/movies");
+    replace(`/${route}`);
     form.reset({ search: "" });
   }, [form, replace]);
 
@@ -60,7 +60,7 @@ export function InputForm() {
           name="search"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Search for movies</FormLabel>
+              <FormLabel>Search for {search}</FormLabel>
               <FormControl>
                 <Input
                   placeholder="Search....."

@@ -5,14 +5,14 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import React from "react";
-import CustomImage from "../movies/components/Image";
-import { InputForm } from "../movies/components/InputForm";
+import CustomImage from "./Image";
+import { InputForm } from "./InputForm";
 import { Result } from "../utils/types";
 
-const RoutesSection = ({ array }: { array: Result[] }) => {
+const RoutesSection = ({ array , route ,search }: { array: Result[] ,route:string , search:string}) => {
   return (
     <section className="max-w-screen-2xl mx-auto pt-24 px-3">
-      <InputForm />
+      <InputForm route={route} search={search} />
       {array.length > 0 ? (
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5  mb-5">
           {array.map((m) => (
