@@ -9,7 +9,7 @@ const NavBar = () => {
       <div className="max-w-screen-2xl mx-auto flex justify-between items-center text-white h-full w-full px-3">
         <Link href={"/"} className="flex items-end">
           <RiMovie2Fill className="text-red-700" size={38} />
-          <h1 className="text-xl font-bold">Movies</h1>
+          <h1 className="text-xl font-bold">SceneSeeker</h1>
         </Link>
         <div className="flex gap-5 font-bold text-lg tracking-widest">
           <ActiveLink href={"/movies"}>Movies</ActiveLink>

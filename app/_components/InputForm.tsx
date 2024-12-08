@@ -15,7 +15,6 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useEffect } from "react";
 
 const FormSchema = z.object({
   search: z.string().min(1, {
@@ -23,7 +22,7 @@ const FormSchema = z.object({
   }),
 });
 
-export function InputForm({route,search}:{route:string,search:string}) {
+export function InputForm({search}:{search:string}) {
   const searchParams = useSearchParams();
   const pathName = usePathname();
   const params = new URLSearchParams(searchParams);
@@ -37,6 +36,7 @@ export function InputForm({route,search}:{route:string,search:string}) {
   });
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
+    params.delete("page");
     if (data.search) {
       params.set("query", data.search.toString());
     } else {
@@ -44,10 +44,16 @@ export function InputForm({route,search}:{route:string,search:string}) {
     }
     replace(`${pathName}?${params.toString()}`);
   }
-  useEffect(() => {
-    replace(`/${route}`);
-    form.reset({ search: "" });
-  }, [form, replace]);
+  function clearQueries() {
+    form.reset({ search: "" })
+    replace(pathName);
+  }
+
+  // useEffect(() => {
+  //   replace(`/${route}`);
+  //   form.reset({ search: "" });
+  // }, [form, replace]);
+
 
   return (
     <Form {...form}>
@@ -72,9 +78,18 @@ export function InputForm({route,search}:{route:string,search:string}) {
             </FormItem>
           )}
         />
-        <Button type="submit" className="my-3 rounded-full bg-red-800 hover:bg-red-900">
-          Submit
-        </Button>
+        <div className="flex gap-2">
+          <Button type="submit" className="my-3 rounded-full bg-red-700 hover:bg-red-900">
+            Submit
+          </Button>
+          <Button
+            type="button"
+            onClick={clearQueries}
+            className="my-3 rounded-full bg-gray-800 hover:bg-gray-900"
+          >
+            Clear
+          </Button>
+        </div>
       </form>
     </Form>
   );

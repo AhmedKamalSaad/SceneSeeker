@@ -1,5 +1,5 @@
 export interface Data {
-  page: number;
+  total_pages: number;
   results: Result[];
 }
 export interface Result {
