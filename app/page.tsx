@@ -8,13 +8,13 @@ import {
 } from "./utils";
 export default function Home() {
   return (
-    <>
+    <main>
       <Hero />
       <TrendingSection />
       <UpcomingSection />
       <OnTheAirSection />
       <PopularMoviesSection />
       <TopRatedTvSection />
-    </>
+    </main>
   );
 }

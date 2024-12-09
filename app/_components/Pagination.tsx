@@ -17,9 +17,23 @@ const Pagination = ({ CurrentPage, total_pages }: Props) => {
   };
   return (
     <div className="my-8 mx-auto max-w-screen-2xl flex items-center justify-center gap-3">
-      <Button onClick={() => changePage(CurrentPage-1)} className="rounded-full">Previous</Button>
-     <p className="text-base text-white">Page {CurrentPage} of {total_pages}</p>
-      <Button onClick={() => changePage(CurrentPage + 1)} className="rounded-full">Next</Button>
+      <Button
+        disabled={CurrentPage === 1}
+        onClick={() => changePage(CurrentPage - 1)}
+        className="rounded-full"
+      >
+        Previous
+      </Button>
+      <p className="text-base text-white">
+        Page {CurrentPage} of {total_pages}
+      </p>
+      <Button
+        disabled={CurrentPage === total_pages}
+        onClick={() => changePage(CurrentPage + 1)}
+        className="rounded-full"
+      >
+        Next
+      </Button>
     </div>
   );
 };
